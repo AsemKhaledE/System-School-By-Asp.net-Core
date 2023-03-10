@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "ModelCore@1.1.1",
+      "destination": "wwwroot/lib/ModelCore/"
+    },
+    {
+      "library": "bootstrap-modal@2.2.6",
+      "destination": "wwwroot/lib/bootstrap-modal/"
+    },
+    {
+      "library": "jquery.json2html@1.2.0",
+      "destination": "wwwroot/lib/jquery.json2html/"
+    },
+    {
+      "library": "jquery-modal@0.9.2",
+      "destination": "wwwroot/lib/jquery-modal/"
+    }
+  ]
+}

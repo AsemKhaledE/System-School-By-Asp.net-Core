@@ -1,0 +1,131 @@
+﻿@model List<SchoolDapper.Models.StudentCourse>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                CourseId
+            </th>
+            <th>
+                StudentId
+            </th>
+            <th>
+                Course Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a onclick="Delete(this, @item.StudentId , @item.CourseId)" class="btn btn-danger">Delete</a>                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    function Delete(control, studentId, courseId) {
+        var prm = { studentId, courseId };
+        if (confirm('Are You sure to delete this Course ?') == true) {
+            debugger
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("Delete","GetCourseByStudentId")/',
+                data: prm,
+                success: function (result) {
+                    $(control).closest('tr').remove();
+                }
+            });
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<script type="text/javascript">
+
+        $(document).ready(function () {
+            debugger
+                $(function () {
+                    $("DeleteCourse").click(function () {
+                        debugger
+                var studentCourse = $("#studentCourse").val();
+        $.ajax({
+            type: "Get",
+
+            url: '@Url.Action("GetstudentCourses", "GetCourseByStudentId")/' + studentCourse,
+            data: dataString,
+            cache: false,
+            //pass the button as the context for ajax callback methods
+            context: this,
+            success: function (html) {
+                //find the tr in which the clicked button belongs to and delete it
+                $(this).closest('DeleteCourse').revmove()
+            }
+        });
+    });
+    true
+        function Delete() {
+        $("#Delete").click(function () {
+            if (confirm('Are You sure to delete this record ?') == true)
+            {
+                debugger
+                $.ajax({
+                    type: "Post",
+                    url: '@Url.Action("DeleteCourse", "GetCourseByStudentId")/',
+                    success: function (response) {
+                        if (response.success) {
+                            $("#GetstudenCourses").html(response.html);
+                        }
+
+                    }
+                });
+
+
+            }
+        });
+    </script>*@
